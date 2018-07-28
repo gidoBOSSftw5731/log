@@ -197,6 +197,9 @@ func (l *Logger) Output(level string, s string) error {
 		}
 		l.mu.Lock()
 	}
+	
+	formattedLevel := " [" + level + "] " //formatting level with brackets
+	s = formattedLevel + s // make the incoming string have the formatting
 	l.buf = l.buf[:0]
 	l.formatHeader(&l.buf, now, file, line)
 	l.buf = append(l.buf, s...)

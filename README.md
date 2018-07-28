@@ -2,7 +2,7 @@
 
 [![GoDoc](https://godoc.org/github.com/gologme/log?status.png)](https://godoc.org/github.com/gologme/log)
 
-This ios a fork of a fork to replace warnings with errors and say what level it 
+This is a fork of a fork to replace warnings with errors and say what level it 
 is in the log.
 
 
