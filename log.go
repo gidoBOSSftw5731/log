@@ -81,7 +81,7 @@ func New(out io.Writer, prefix string, flag int) *Logger {
 func (l *Logger) initLevels() {
 	l.levels = make(map[string]bool)
 	l.levels["info"] = false
-	l.levels["warn"] = false
+	l.levels["error"] = false
 	l.levels["debug"] = false
 	l.levels["trace"] = false
 }
@@ -488,27 +488,27 @@ func (l *Logger) Infoln(v ...interface{}) {
 }
 
 /*
-Warn - This function calls Output to print to the standard logger.
+Error - This function calls Output to print to the standard logger.
 Arguments are handled in the manner of fmt.Print.
 */
-func (l *Logger) Warn(v ...interface{}) {
-	l.Output("warn", fmt.Sprint(v...))
+func (l *Logger) Error(v ...interface{}) {
+	l.Output("error", fmt.Sprint(v...))
 }
 
 /*
-Warnf - This function calls Output to print to the standard logger.
+Errorf - This function calls Output to print to the standard logger.
 Arguments are handled in the manner of fmt.Printf.
 */
-func (l *Logger) Warnf(format string, v ...interface{}) {
-	l.Output("warn", fmt.Sprintf(format, v...))
+func (l *Logger) Errorf(format string, v ...interface{}) {
+	l.Output("error", fmt.Sprintf(format, v...))
 }
 
 /*
-Warnln - This function calls Output to print to the standard logger.
+Errorln - This function calls Output to print to the standard logger.
 Arguments are handled in the manner of fmt.Println.
 */
-func (l *Logger) Warnln(v ...interface{}) {
-	l.Output("warn", fmt.Sprintln(v...))
+func (l *Logger) Errorln(v ...interface{}) {
+	l.Output("error", fmt.Sprintln(v...))
 }
 
 /*
@@ -614,27 +614,27 @@ func Infoln(v ...interface{}) {
 }
 
 /*
-Warn - This function calls Output to print to the standard logger.
+Error - This function calls Output to print to the standard logger.
 Arguments are handled in the manner of fmt.Print.
 */
-func Warn(v ...interface{}) {
-	std.Output("warn", fmt.Sprint(v...))
+func Error(v ...interface{}) {
+	std.Output("error", fmt.Sprint(v...))
 }
 
 /*
-Warnf - This function calls Output to print to the standard logger.
+Errorf - This function calls Output to print to the standard logger.
 Arguments are handled in the manner of fmt.Printf.
 */
-func Warnf(format string, v ...interface{}) {
-	std.Output("warn", fmt.Sprintf(format, v...))
+func Errorf(format string, v ...interface{}) {
+	std.Output("error", fmt.Sprintf(format, v...))
 }
 
 /*
-Warnln - This function calls Output to print to the standard logger.
+Errorln - This function calls Output to print to the standard logger.
 Arguments are handled in the manner of fmt.Println.
 */
-func Warnln(v ...interface{}) {
-	std.Output("warn", fmt.Sprintln(v...))
+func Errorln(v ...interface{}) {
+	std.Output("error", fmt.Sprintln(v...))
 }
 
 /*

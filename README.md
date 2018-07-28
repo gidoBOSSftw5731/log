@@ -2,13 +2,18 @@
 
 [![GoDoc](https://godoc.org/github.com/gologme/log?status.png)](https://godoc.org/github.com/gologme/log)
 
+This ios a fork of a fork to replace warnings with errors and say what level it 
+is in the log.
+
+
+
 This package is a drop in replacement for the built-in Go log package. All the 
 functionality of the built-in package still exists and is unchanged. In addition, 
 this package contains a series of small enhancements and additions. Namely, it 
 adds four logging levels. These logging levels are:
 
 - Info
-- Warn
+- Error
 - Debug
 - Trace
 
@@ -16,7 +21,7 @@ In addition to these four defined logging levels, users can also define their
 own arbitrary logging levels.
 
 Unlike other loggers, these logging levels are not enabled in a chain. Meaning, 
-once a level is enabled, say Warn, all levels above it are not also enabled. 
+once a level is enabled, say Error, all levels above it are not also enabled. 
 This package is implemented in such a way that users can individually turn on 
 and turn off the various new logging levels. If existing code uses the build-in 
 log package, no change is needed to use this package.
@@ -26,15 +31,15 @@ boards, is the ability to set the calldepth.
 
 
 ## Version ##
-1.0.1
+1.0.1v2
 
 
 ## Installation ##
 
 This package can be installed with the go get command:
 ```
-go get github.com/gologme/log
-go install github.com/gologme/log
+go get github.com/gidoBOSSftw5731/log
+go install github.com/gidoBOSSftw5731/log
 ```
 
 ## Example ##
@@ -44,15 +49,15 @@ Just like the built-in package, code can still do simple logging just like:
 log.Println("some interesting logging message")
 ```
 
-In addition to this, users can enable info, warn, debug, or trace logging like:
+In addition to this, users can enable info, error, debug, or trace logging like:
 ```
 log.EnableLevel("info")
-log.EnableLevel("warn")
+log.EnableLevel("error")
 log.EnableLevel("debug")
 log.EnableLevel("trace")
 ```
 
-Once these levels are enabled, calls to the info, warn, debug, or trace loggers 
+Once these levels are enabled, calls to the info, error, debug, or trace loggers 
 will print out just like they do for the Print and Fatal built-in loggers. The 
 functions / methods definitions that are defined for each level, match exactly 
 the ones defined in the built-in package. The new functions/methods are called:
@@ -60,9 +65,9 @@ the ones defined in the built-in package. The new functions/methods are called:
 log.Info()
 log.Infof()
 log.Infoln()
-log.Warn()
-log.Warnf()
-log.Warnln()
+log.Error()
+log.Errorf()
+log.Errorln()
 log.Debug()
 log.Debugf()
 log.Debugln()
