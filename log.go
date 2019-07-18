@@ -197,9 +197,9 @@ func (l *Logger) Output(level string, s string) error {
 		}
 		l.mu.Lock()
 	}
-	
+
 	formattedLevel := "[" + level + "]	" //formatting level with brackets
-	s = formattedLevel + s // make the incoming string have the formatting
+	s = formattedLevel + s               // make the incoming string have the formatting
 	l.buf = l.buf[:0]
 	l.formatHeader(&l.buf, now, file, line)
 	l.buf = append(l.buf, s...)
@@ -400,6 +400,28 @@ is set at 2. A depth of 2 represents the behavior of the standard library.
 */
 func (l *Logger) SetCallDepth(d int) {
 	l.calldepth = d
+	switch d {
+	case 0:
+		EnableLevel("fatal")
+	case 1:
+		EnableLevel("fatal")
+		EnableLevel("error")
+	case 2:
+		EnableLevel("fatal")
+		EnableLevel("error")
+		EnableLevel("info")
+	case 3:
+		EnableLevel("fatal")
+		EnableLevel("error")
+		EnableLevel("info")
+		EnableLevel("debug")
+	case 4:
+		EnableLevel("fatal")
+		EnableLevel("error")
+		EnableLevel("info")
+		EnableLevel("debug")
+		EnableLevel("trace")
+	}
 }
 
 /*
@@ -407,7 +429,28 @@ SetCallDepth - This function will set the call depth. By default the call depth
 is set at 2. A depth of 2 represents the behavior of the standard library.
 */
 func SetCallDepth(d int) {
-	std.calldepth = d
+	switch d {
+	case 0:
+		EnableLevel("fatal")
+	case 1:
+		EnableLevel("fatal")
+		EnableLevel("error")
+	case 2:
+		EnableLevel("fatal")
+		EnableLevel("error")
+		EnableLevel("info")
+	case 3:
+		EnableLevel("fatal")
+		EnableLevel("error")
+		EnableLevel("info")
+		EnableLevel("debug")
+	case 4:
+		EnableLevel("fatal")
+		EnableLevel("error")
+		EnableLevel("info")
+		EnableLevel("debug")
+		EnableLevel("trace")
+	}
 }
 
 /*
